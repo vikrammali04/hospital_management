@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_tag_form" model="ir.ui.view">
+        <field name="name">hospital.tag.form</field>
+        <field name="model">hospital.tag</field>
+        <field name="type">form</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <field name="name"/>
+                        <field name="sequence"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="view_tag_tree" model="ir.ui.view">
+        <field name="name">hospital.tag.tree</field>
+        <field name="model">hospital.tag</field>
+        <field name="type">tree</field>
+        <field name="arch" type="xml">
+            <tree editable='bottom'>
+                <field name="name"/>
+                <field name="sequence"/>
+
+            </tree>
+        </field>
+    </record>
+
+    <record id="action_tag" model="ir.actions.act_window">
+        <field name="name"> Hospital Tags</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">hospital.tag</field>
+        <field name="view_mode">tree,form</field>
+        <field name="context"></field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Create your first Tag!
+            </p>
+        </field>
+    </record>
+
+    <menuitem id="menu_tag_child" name="Hospital Tags" action="action_tag" parent="menu_tag" sequence="0"/>
+
+</odoo>

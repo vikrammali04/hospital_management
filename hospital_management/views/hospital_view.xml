@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_hospital_form" model="ir.ui.view">
+        <field name="name">res.hospital.form</field>
+        <field name="model">res.hospital</field>
+        <field name="type">form</field>
+        <field name="arch" type="xml">
+            <form>
+                <button type="object" name="filter_by_partner" string="ORM Methods"/>
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="hospital_name"/>
+                            <field name="contact"/>
+                            <field name="partner_id"/>
+                            <field name="sequence_count"/>
+                            <field name="tag_ids" widget='many2many_tags'/>
+                        </group>
+                        <group>
+                            <label string="Address" for="street">
+                            </label>
+                            <div>
+                                <div class="o_address_format">
+                                    <field name="street" placeholder="Street..." class="o_address_street" />
+                                    <field name="street2" placeholder="Street 2..." class="o_address_street" />
+                                    <field name="city" placeholder="City" class="o_address_city" />
+                                    <field name="pincode" placeholder="ZIP" class="o_address_zip" />
+                                </div>
+                            </div>
+                        </group>
+                    </group>
+                    <notebook>
+                        <page string='Staff' name='staff_ids'>
+                            <field name='staff_ids'>
+                                <tree editable='bottom'>
+                                    <field name="ref_id" string='Staff'/>
+                                    <field name="designation" string="Designation"/>
+                                    <field name="age" string="Age"/>
+                                </tree>
+                            </field>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="view_hospital_graph" model="ir.ui.view">
+        <field name="name">res.hospital.graph</field>
+        <field name="model">res.hospital</field>
+        <field name="arch" type = "xml">
+            <graph string = "Hospital Graph">
+                <field name = "hospital_name"/>
+            </graph>
+        </field>
+    </record>
+
+    <record id="view_hospital_tree" model="ir.ui.view">
+        <field name="name">res.hospital.tree</field>
+        <field name="model">res.hospital</field>
+        <field name="type">tree</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="hospital_name"/>
+                <field name="contact"/>
+                <field name="pincode"/>
+                <field name="partner_id"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="view_hospital_pivot" model="ir.ui.view">
+        <field name="name">res.hospital.pivot</field>
+        <field name="model">res.hospital</field>
+        <field name="arch" type = "xml">
+            <pivot string = "Hospital">
+                <field name = "hospital_name"/>
+                <field name = "partner_id"/>
+            </pivot>
+        </field>
+    </record>
+
+    <record id="view_hospital_search" model="ir.ui.view">
+        <field name="name">res.hospital.search</field>
+        <field name="model">res.hospital</field>
+        <field name="type">search</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="hospital_name" string="Hospital Name" filter_domain="[ ('hospital_name', 'ilike', self)]"/>
+                <group>
+                    <filter name='group_by_partner' string='Partner' context="{'group_by':'partner_id'}"/>
+                </group>
+                <filter name='filter_city1' string='Ahmedabad' domain="[('city','=','Ahmedabad')]" />
+                <filter name='filter_city2' string='Surat' domain="[('city','=','Surat')]" />
+            </search>
+        </field>
+    </record>
+
+    <record id="action_hospital" model="ir.actions.act_window">
+        <field name="name">Hospital</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">res.hospital</field>
+        <field name="view_mode">tree,form,graph,pivot</field>
+        <field name="context">{}</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Create your first Hospital!
+            </p>
+        </field>
+    </record>
+
+    <menuitem id="menu_hospital_child" name="Hospital Data" action="action_hospital" parent="menu_hospital" sequence="0"/>
+
+</odoo>

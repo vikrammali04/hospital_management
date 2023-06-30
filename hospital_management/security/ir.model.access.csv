@@ -1,0 +1,6 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access.res.hospital,access_res_hospital,sttl_hospital_management.model_res_hospital,base.group_user,1,1,1,1
+access.hospital.tag,access_hospital_tag,sttl_hospital_management.model_hospital_tag,base.group_user,1,1,1,1
+access.access.hospital.staff,access_hospital_staff,sttl_hospital_management.model_hospital_staff,base.group_user,1,1,1,1,access_hospital_tag,sttl_hospital_management.model_hospital_tag,base.group_user,1,1,1,1
+access.access.hospital.staff.members,access_hospital_staff_members,sttl_hospital_management.model_hospital_staff_members,base.group_user,1,1,1,1,access_hospital_tag,sttl_hospital_management.model_hospital_tag,base.group_user,1,1,1,1
+access.interview.staff,access_interview_staff,sttl_hospital_management.model_interview_staff,base.group_user,1,1,1,1
