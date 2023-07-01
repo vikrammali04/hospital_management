@@ -6,7 +6,6 @@
         <field name="type">form</field>
         <field name="arch" type="xml">
             <form>
-                <button type="object" name="filter_by_partner" string="ORM Methods"/>
                 <sheet>
                     <group>
                         <group>

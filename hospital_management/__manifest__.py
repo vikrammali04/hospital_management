@@ -15,7 +15,6 @@
         'views/tag_view.xml',
         'views/staff_view.xml',
         'views/staff_interview.xml',
-        'security/security.xml',
         
         
     ],

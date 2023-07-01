@@ -32,18 +32,6 @@ class Hospital(models.Model):
             self.sequence_count = sum(self.tag_ids.mapped('sequence'))
         return res
 
-    def filter_by_partner(self):
-        data = self.search([])
-        hospital_names = data.filtered(
-            lambda x: not x.partner_id).mapped('hospital_name')
-        print('Hospitals without partners:', hospital_names)
-        print('Sorted hospitals without partners:', sorted(hospital_names))
-        print('num of hospitals in Ahmedabad: ',
-              self.search_count([('city', '=', 'Ahmedabad')]))
-        delet_rec = self.search([('hospital_name', '=', 'LD')])
-        delet_rec.unlink()
-        # print(self.env.ref('res.hospital'))
-
 
 class HospitalStaffMembers(models.Model):
     _name = 'hospital.staff.members'
